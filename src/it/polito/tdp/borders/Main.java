@@ -1,5 +1,6 @@
 package it.polito.tdp.borders;
 
+import it.polito.tdp.borders.model.Model;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,10 +15,14 @@ public class Main extends Application {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Borders.fxml"));
 			BorderPane root = (BorderPane) loader.load();
 			BordersController controller = loader.getController();
+			
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
 			// TODO set model
+			Model model=new Model();
+			controller.setModel(model);
 
-			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {
